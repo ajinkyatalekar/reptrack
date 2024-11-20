@@ -1,14 +1,15 @@
 import { router } from "expo-router";
 import { Alert, ScrollView, Text, View, Image, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import CustomButton from "@/components/CustomButton";
+import images from "@/constants/images";
 
 import { useState } from "react";
 import CustomInput from "../../components/CustomInput";
 
 import { registerUser, } from "@/lib/services/auth";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -46,13 +47,13 @@ export default function Register() {
               title="First Name*"
               value={form.first_name}
               onChange={(e) => setForm({ ...form, first_name: e})}
-              otherStyles="mt-7 w-[47%]"
+              otherStyles="mt-5 w-[47%]"
             />
             <CustomInput 
               title="Last Name*"
               value={form.last_name}
               onChange={(e) => setForm({ ...form, last_name: e})}
-              otherStyles="mt-7 w-[47%]"
+              otherStyles="mt-5 w-[47%]"
             />
           </View>
           <CustomInput 
@@ -79,9 +80,12 @@ export default function Register() {
           <View className="items-center">
             <Text className="text-lg text-gray-100 mt-4">
               Already have an account? {} 
-              <Link href="/login" className='text-lg text-secondary-100 rounded-md' disabled={isSubmitting}>
-              Login
-            </Link>
+              <Text 
+                className='text-lg text-secondary-100 rounded-md' 
+                onPress={()=>{router.replace('/login')}} 
+                disabled={isSubmitting}>
+                Login
+              </Text>
             </Text>
           </View>
 
