@@ -1,6 +1,7 @@
 import { Redirect, router } from "expo-router";
 import { Text, View, ScrollView, Image } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { useState, useEffect } from "react";
 
 import CustomButton from "@/components/CustomButton";
 
@@ -9,7 +10,22 @@ import bulletImage1 from '../assets/images/landing/walk.png'
 import bulletImage2 from '../assets/images/landing/sit.png'
 import bulletImage3 from '../assets/images/landing/run.png'
 
+import { supabase } from '@/lib/supabase'
+import { Session } from '@supabase/supabase-js'
+
 export default function Index() {
+
+  const [session, setSession] = useState(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+    })
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+  }, [])
 
   return (
     <ScrollView className="h-full bg-dark">

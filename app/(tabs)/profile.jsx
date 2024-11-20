@@ -1,18 +1,15 @@
 import { router } from "expo-router";
 import { Alert, Text, View } from "react-native";
 
-import { logoutUser } from "@/lib/services/auth";
+import { logoutUser } from "@/lib/services/auth_supabase";
 import CustomButton from "@/components/CustomButton";
 
 const handleLogout = async () => {
-  try {
-    const result = await logoutUser()
+    const {error} = await logoutUser()
 
-    router.replace('/')
-  } catch (error : any) {
-    Alert.alert(error)
-    throw new Error(error)
-  }
+    if (!error) {
+      router.replace('/')
+    }
 }
 
 export default function Profile() {

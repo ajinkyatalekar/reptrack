@@ -4,14 +4,14 @@ import { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
 
-import { loginUser } from '@/lib/services/auth'
+import { loginUser } from '@/lib/services/auth_supabase';
 
 import CustomInput from "@/components/CustomInput";
 import CustomButton from "@/components/CustomButton";
 
 export default function Login() {
   const [form, setForm] = useState({
-    email:'test@gmail.com',
+    email:'ajinkya@gmail.com',
     password:'password'
   })
 
@@ -19,14 +19,14 @@ export default function Login() {
 
   const handleLogin = async () => {
     setIsSubmitting(true);
-    try {
-      const result = await loginUser(form.email, form.password)
+
+    const {error} = await loginUser(form.email, form.password)
+
+    if (!error) {
       router.replace('/home')
-    } catch (error) {
-      Alert.alert(error.message)
-    } finally {
-      setIsSubmitting(false);
     }
+
+    setIsSubmitting(false);
   }
 
   return (

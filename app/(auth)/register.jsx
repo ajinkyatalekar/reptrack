@@ -9,28 +9,28 @@ import images from "@/constants/images";
 import { useState } from "react";
 import CustomInput from "../../components/CustomInput";
 
-import { registerUser, } from "@/lib/services/auth";
+import { registerUser } from "@/lib/services/auth_supabase";
 
 export default function Register() {
   const [form, setForm] = useState({
-    first_name:'',
-    last_name:'',
-    email:'',
-    password:''
+    first_name:'Ajinkya',
+    last_name:'Talekar',
+    email:'ajinkya@gmail.com',
+    password:'password'
   })
 
   const [isSubmitting , setIsSubmitting] = useState(false)
 
   const handleRegister = async () => {
     setIsSubmitting(true);
-    try {
-      const result = await registerUser(form.first_name, form.last_name, form.email, form.password)
-      router.replace('/home')
-    } catch (error) {
-      Alert.alert(error.message)
-    } finally {
-      setIsSubmitting(false);
+    
+    const {data, error} = await registerUser(form.first_name, form.last_name, form.email, form.password)
+
+    if (!error) {
+      router.replace('/login')
     }
+
+    setIsSubmitting(false);
   }
 
   return (
