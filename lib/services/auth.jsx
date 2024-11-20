@@ -59,7 +59,7 @@ export async function registerUser(first_name, last_name, email, password) {
     }
 }
 
-export async function getCurrentUser() {
+export async function getUser() {
     try {
         const currentAccount = await account.get();
 
