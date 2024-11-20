@@ -10,13 +10,15 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "package": "com.jin.reptrack"
+      "package": "com.jin.reptrack",
+      "bundleIdentifier": "com.anonymous.reptrack"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.anonymous.reptrack"
     },
     "web": {
       "bundler": "metro",

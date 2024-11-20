@@ -18,7 +18,8 @@ module.exports = {
         light: "#ffffff",
         gray: {
           DEFAULT: "#999999",
-          100: "#bdbdbd"
+          100: "#bdbdbd",
+          200: "#787878"
         }
       },
       fontFamily: {

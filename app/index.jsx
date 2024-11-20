@@ -22,7 +22,7 @@ export default function Index() {
           />
         </View>
 
-        <Text className="text-6xl text-light font-pbold mb-[30]">
+        <Text className="text-6xl text-light font-pbold mb-[30] shadow-[2px_2px_14px_0px_rgba(255,_255,_255,_0.1)]">
           Welcome to { }
           <Text className="text-secondary">
             RepLog

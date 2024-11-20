@@ -37,3 +37,7 @@ yarn-error.*
 
 # appwrite config
 lib/appwrite.js
+
+# build
+ios/
+android/
